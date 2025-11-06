@@ -1,4 +1,4 @@
-export async function onRequestPost(context) {
+export async function onRequest(context) {
     const { request, env } = context;
     const BOT_TOKEN = env.BOT_TOKEN;
     const PAGE_URL = "https://telegram-file-stream.pages.dev"; // Your Cloudflare Page URL
@@ -60,3 +60,4 @@ async function sendMessage(token, chatId, text) {
         body: JSON.stringify({ chat_id: chatId, text }),
     });
 }
+
