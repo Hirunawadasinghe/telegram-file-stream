@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Stream Proxy</title>
+    <style>
+        body {
+            background: #111;
+            color: #eee;
+            font-family: sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+
+        video {
+            width: 90%;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        input {
+            margin-top: 20px;
+            width: 80%;
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Telegram Stream Proxy</h1>
+    <p>Enter Telegram file path (e.g. <code>documents/file_123.mp4</code>)</p>
+    <input id="pathInput" placeholder="Enter Telegram file path">
+    <br><br>
+    <video id="player" controls></video>
+
+    <script>
+        const input = document.getElementById('pathInput');
+        const player = document.getElementById('player');
+
+        input.addEventListener('change', () => {
+            const filePath = input.value.trim();
+            if (filePath) {
+                player.src = `/stream?path=${encodeURIComponent(filePath)}`;
+            }
+        });
+    </script>
+</body>
+
+</html>
